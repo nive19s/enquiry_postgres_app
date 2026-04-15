@@ -1,0 +1,87 @@
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Create New Enquiry</h2>
+                <p>Please fill out the form below to submit your enquiry</p>
+            </div>
+            
+            <form id="enquiryForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="enquiryTypeId" class="form-label">
+                            Enquiry Type <span class="required">*</span>
+                        </label>
+                        <select class="form-select" name="enquiryTypeId" [(ngModel)]="newEnquiryObj.enquiryTypeId" id="enquiryTypeId">
+                            <option value="">Select Type</option>
+                            @for (item of typeList | async; track $index) {
+                                <option [ngValue]="item.typeId">{{item.typeName}}</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="enquiryStatusId" class="form-label">
+                            Status <span class="required">*</span>
+                        </label>
+                        <select class="form-select" name="enquiryStatusId" [(ngModel)]="newEnquiryObj.enquiryStatusId" id="enquiryStatusId">
+                            <option value="">Select Status</option>
+                            @for (item of statusList |async; track $index) {
+                                <option [ngValue]="item.statusId">{{item.status}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="customerName" class="form-label">
+                        Customer Name <span class="required">*</span>
+                    </label>
+                    <input type="text" [(ngModel)]="newEnquiryObj.customerName" class="form-control"  id="customerName" name="customerName" 
+                           placeholder="Enter your full name" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="mobileNo" class="form-label">
+                            Mobile Number <span class="required">*</span>
+                        </label>
+                        <input type="tel" [(ngModel)]="newEnquiryObj.mobileNo" class="form-control"  id="mobileNo" name="mobileNo" 
+                               placeholder="0751231234" pattern="^0\d{9}$" required>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label">
+                            Email Address <span class="required">*</span>
+                        </label>
+                        <input type="email" [(ngModel)]="newEnquiryObj.email" class="form-control"  id="email" name="email" 
+                               placeholder="your.email@example.com" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="form-label">
+                        Message <span class="required">*</span>
+                    </label>
+                    <textarea [(ngModel)]="newEnquiryObj.message" class="form-control"  id="message" name="message"     
+                              placeholder="Please describe your enquiry in detail..." required></textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="resolution" class="form-label">Resolution</label>
+                    <textarea [(ngModel)]="newEnquiryObj.resolution" class="form-control"  id="resolution" name="resolution" 
+                              placeholder="Resolution details (optional)"></textarea>
+                </div>
+
+                <div class="row">
+                    <div class="md-6 mb-2">
+                        <button type="button" (click)="onSave()" class="btn btn-primary btn-submit">
+                            Submit Enquiry
+                        </button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

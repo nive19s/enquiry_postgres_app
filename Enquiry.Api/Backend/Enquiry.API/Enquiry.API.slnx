@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Enquiry.API/Enquiry.API.csproj" />
+  <Project Path="Enquiry.Data/Enquiry.Data.PostgreSQL.csproj" Id="31f75331-5ecc-474f-80bf-51c1619272cb" />
+</Solution>

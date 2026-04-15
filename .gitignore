@@ -1,0 +1,22 @@
+# .NET
+bin/
+obj/
+
+# Angular
+node_modules/
+dist/
+
+# VSCode
+.vscode/
+
+# Others
+.env
+*.log
+
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build outputs
+bin/
+obj/

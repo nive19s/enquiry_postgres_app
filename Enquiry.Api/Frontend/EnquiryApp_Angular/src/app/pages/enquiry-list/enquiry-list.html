@@ -1,0 +1,72 @@
+<div class="page-wrapper">
+<div class="container">
+    <div class="page-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>All Enquiries</h1>
+            <button class="btn btn-primary btn-action btn-edit" routerLink="/createNew">+ New Enquiry</button>
+        </div>
+    </div>
+
+    <div class="filter-section">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <select class="form-select">
+                    <option value="">All Types</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select class="form-select">
+                    <option value="">All Status</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Search by customer name...">
+            </div>
+        </div>
+    </div>
+    <!-- Enquiry-List -->
+    <div class="enquiry-list">
+        @for (item of enquiryList; track $index) {
+            <div class="enquiry-card">
+                <div class="customer-info">
+                    <div class="customer-name">{{ item.customerName }}</div>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>{{ item.mobileNo }}</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <span>{{ item.email }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-box">
+                    <div class="message-label">Message:</div>
+                    <p class="message-text">
+                        {{ item.message }}
+                    </p>
+                </div>
+
+                <div class="resolution-box">
+                    <div class="message-label">Resolution:</div>
+                    <p class="message-text">
+                        {{ item.resolution }}
+                    </p>
+                </div>
+
+                <div class="enquiry-footer">
+                    <div class="date-info">
+                        Created: {{ item.createdDate | date : 'dd-MMM-yy' }}
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-action btn-edit">Edit</button>
+                        <button class="btn btn-action btn-delete" (click)="onDelete(item.enquiryId)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+</div>

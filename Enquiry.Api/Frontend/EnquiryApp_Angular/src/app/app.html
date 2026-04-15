@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a routerLink="landingpage" class="navbar-brand" href="javascript:void(0)">Enquiry-App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        @if(authService.isLoggedIn() && authService.isUser()) {
+          <li class="nav-item">
+          <a class="nav-link" routerLink="list" routerLinkActive="active">List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="createNew" routerLinkActive="active">New Enquiry</a>
+        </li>
+        }
+
+        @if(authService.isLoggedIn() && authService.isAdmin()) {
+          <li class="nav-item">
+          <a class="nav-link" routerLink="admin" routerLinkActive="active">Admin page</a>
+        </li>
+        }
+
+        @if(authService.isLoggedIn()) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="profile" routerLinkActive="active">Profile</a>
+          </li>
+        }
+      </ul>
+      <div class="d-flex gap-2">
+        @if(!authService.isLoggedIn()) {
+          <button class="btn btn-primary" type="button" routerLink="login">Login</button>
+        } @else {
+          <img [src]="authService.currentUser()?.profileImage" alt="Profile" class="profile-img" style="width: 37px; height: 37px; object-fit: cover; border-radius: 50%;">
+          <button class="btn btn-warning" type="button">{{authService.currentUser()?.fullName}}</button>
+          <button class="btn btn-danger" type="button" (click)="onLogout()">Logout</button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<router-outlet/>
