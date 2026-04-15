@@ -56,7 +56,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "allowCors",
     builder =>
         {
-            builder.WithOrigins("https://localhost:4200", "http://localhost:4200", "https://enquiryapi-e7h5g3ggeebwbgc3.eastasia-01.azurewebsites.net")
+            builder.WithOrigins("https://localhost:4200", "http://localhost:4200", "https://enquiryapi-e7h5g3ggeebwbgc3.eastasia-01.azurewebsites.net", "https://lemon-sky-0500e0d00.7.azurestaticapps.net")
             .AllowCredentials()
             .AllowAnyHeader()
             .AllowAnyMethod();
