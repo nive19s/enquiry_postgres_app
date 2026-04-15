@@ -73,21 +73,10 @@ builder.Services.AddScoped<IEnquiryService, EnquiryService>();
 // configuring OpenAPI
 builder.Services.AddOpenApi();
 
-// Swagger enabled for all environments
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-//Swagger always available
-app.UseSwagger();
-app.UseSwaggerUI();
+app.MapOpenApi();
 
 app.UseHttpsRedirection();
 
