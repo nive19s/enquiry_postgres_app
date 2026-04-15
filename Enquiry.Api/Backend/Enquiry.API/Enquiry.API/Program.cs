@@ -56,7 +56,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: "allowCors",
     builder =>
         {
-            builder.WithOrigins("https://localhost:4200", "http://localhost:4200")
+            builder.WithOrigins("https://localhost:4200", "http://localhost:4200", "https://enquiryapi-e7h5g3ggeebwbgc3.eastasia-01.azurewebsites.net")
             .AllowCredentials()
             .AllowAnyHeader()
             .AllowAnyMethod();
@@ -73,6 +73,10 @@ builder.Services.AddScoped<IEnquiryService, EnquiryService>();
 // configuring OpenAPI
 builder.Services.AddOpenApi();
 
+// Swagger enabled for all environments
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -80,6 +84,10 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+//Swagger always available
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
