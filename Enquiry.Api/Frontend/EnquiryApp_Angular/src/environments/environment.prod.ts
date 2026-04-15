@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://localhost:5231/api/EnquiryMaster',
-    authApiUrl: 'http://localhost:5231/api/Auth'
-}
+    apiUrl: 'https://enquiryapi-e7h5g3ggeebwbgc3.eastasia-01.azurewebsites.net/api/EnquiryMaster',
+    authApiUrl: 'https://enquiryapi-e7h5g3ggeebwbgc3.eastasia-01.azurewebsites.net/api/Auth'
+};
